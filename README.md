@@ -1,1 +1,1 @@
-# This is the official Github repository of the Liberty University High-Performance Computing Club!
+# This is the official GitHub repository for the Liberty University High-Performance Computing Club!
