@@ -29,7 +29,7 @@ Next, you will want to intall MPICH, which allows the Pis to split tasks among m
 <code>sudo apt install mpich python3-mpi4py</code>
 </pre>
 Finally install another python library for mpi. Run this on **EACH** of the pis.
-<pre><code>sudo apt install python3-pip python-dev libopenmpi-dev</code></pre>
+<pre><code>sudo apt install python3-pip python-dev-is-python3 libopenmpi-dev</code></pre>
 > Installs python and other resources needed to run tasks in parrellel
 
 
