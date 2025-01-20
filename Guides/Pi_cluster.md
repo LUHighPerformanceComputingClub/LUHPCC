@@ -106,7 +106,7 @@ In the file, enter:
 <pre><code>print("Hello World!")</code></pre>
 Ctrl + x, then y, then copy the file to **EACH OF THE SLAVE NODES**:
 
-<pre><code>scp Hello.py pi@NODE_IP </pre></code>
+<pre><code>scp Hello.py pi@NODE_IP:/home/USER/ </pre></code>
 >**^COPY TO EACH PI IP ADDRESS**
 
 Now, all you need to do is enter this command:
