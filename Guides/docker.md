@@ -22,8 +22,38 @@ Once you have it pulled, you can run the container by using the command **`sudo 
 To find out more about docker, use the `man` command. 
 
 ## How to install Docker?
-Installation of docker varies per system, 
+Installation of docker varies per system, but on Raspberry PI OS (64 bit), the Debian installation instructions are followed.
 
+Link To instructions: https://docs.docker.com/engine/install/debian/
+
+
+1. Set up the Docker apt repository 
+```bash
+# Add Docker's official GPG key:
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+
+
+2. Install the Docker packages
+
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+3. Verify by running `hello-world`
+```bash
+sudo docker run hello-world
+```
 
 ## What can I do with Docker?
 Here are a list of fun projects that you can do with Docker:
