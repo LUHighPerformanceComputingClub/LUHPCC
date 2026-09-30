@@ -16,7 +16,7 @@ This guide will go over how to cluster multiple raspberry pi's together, and how
   4. Enable ssh on each of the pis
 
 ## Getting Started
-Before we get started, we will need to connect the pis to the internet. Using the wireless connectivity options of the pis or an ethernet hub, connect the pis to the internet at this time. This can be done by simply plugging in the ethernet, or selecting an available Wi-Fi network. Note that Pis like to be finiky when there is no display output for the pi when it is turned on, so it is reccomended that each pi temporarily gets plugged in to a display when it gets powered on. 
+Before we get started, we will need to connect the pis to the internet. Using the wireless connectivity options of the pis or an ethernet hub, connect the pis to the internet at this time. This can be done by simply plugging in the ethernet, or selecting an available Wi-Fi network. Note that Pis like to be finicky when there is no display output for the pi when it is turned on, so it is reccomended that each pi temporarily gets plugged in to a display when it gets powered on. 
 
 
 Ok now you have all of the pis on and connected to the internet, what now? Now you need to update your systems using these basic commands. Run this on **EACH** of the pis in the cluster:
@@ -24,12 +24,11 @@ Ok now you have all of the pis on and connected to the internet, what now? Now y
 <code>sudo apt update</code>
 <code>sudo apt upgrade</code>
 </pre>
-Next, you will want to intall MPICH, which allows the Pis to split tasks among multiple pis. Run this on **EACH** of the pis
-<pre>
-<code>sudo apt install mpich python3-mpi4py</code>
-</pre>
-Finally install another python library for mpi. Run this on **EACH** of the pis.
-<pre><code>sudo apt install python3-pip python-dev-is-python3 libopenmpi-dev</code></pre>
+Next, you will want to intall MPICH, which allows the Pis to split tasks among multiple pis. The package names for MPICH are: mpich python3-mpi4py. You will also install another python library for mpi with the following packages: python3-pip python-dev-is-python3 libopenmpi-dev.
+
+Run this on **EACH** of the pis
+
+<pre><code>sudo apt install mpich python3-mpi4py python3-pip python-dev-is-python3 libopenmpi-dev</code></pre>
 > Installs python and other resources needed to run tasks in parrellel
 
 
@@ -43,7 +42,7 @@ Next, go down to the IPv4 Configuration section, and change the IP to a manual a
 
 Finally, in the IPv4 Configuration section down to where it says addresses, and type in the desired address. Go to the bottom and select ok.
 
-**After exiting nmtui, run the commands <code> sudo ifconfig eth0 down</code>, then <code>sudo ifconfig eth0 up</code>**
+**After exiting nmtui, run the commands <code>sudo ifconfig eth0 down</code>, then <code>sudo ifconfig eth0 up</code>**
 
 
 ## Getting IP addresses and usernames
@@ -87,7 +86,7 @@ Do this from the master node, and copy the id to each of the pis. User stands fo
 <code>ssh-copy-id user@PI_IP</code>
 </pre>
 Next, back on the master node, run this command. USER is the user of the master node, and USER2 is the user of the slave node, and IPAddress is the IP address of the slave node:
-<pre><code>scp /home/USER/.ssh/id_rsa.pub USER2@IPAddress:/home/USER2/master.pub</code></pre>
+<pre><code>scp /home/USER/.ssh/id_ed25519.pub USER2@IPAddress:/home/USER2/master.pub</code></pre>
 
 Finally, ssh into the user
 <pre><code>ssh user@<b>NODE_IP</b></code></pre>
